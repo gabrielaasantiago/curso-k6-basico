@@ -4,7 +4,11 @@ import uuid from './libs/uuid.js';
 
 export const options = {
     vus: 10,
-    duration: '30s'
+    duration: '30s',
+    thresholds: {
+        http_req_duration: ['p(95)<2000'], //95% das requests têm que responder até 2s
+        http_req_failed: ['rate<0.01'] // 1% das requests podem ocorrer erro
+    }
 };
 
 export default function () {
